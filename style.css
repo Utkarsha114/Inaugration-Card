@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box; /*if padding is added to div or any html element then width wont change*/
+}
+body {
+  background-color: black;
+}
+
+#box p {
+  font-size: 23px;
+  /* Adjusted font size for smaller screens */
+}
+
+#box {
+  width: 92%;
+  height: 530px;
+  align-items: center;
+  background: rgb(185, 181, 181);
+  position: relative; /* we want to add other elememts inside and their position will be absolute. so we want them to not go beyond/outside div*/
+  /* margin: 40px;
+            margin-top: 80px; */
+  padding-top: 80px;
+  padding: 30px;
+  color: black;
+  font-style: italic;
+  border-radius: 30px;
+  margin: 5% auto;
+}
+
+#box::before,
+#box::after {
+  content: "";
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(
+    45deg,
+    blue,
+    green,
+    aqua,
+    goldenrod,
+    red,
+    purple,
+    teal,
+    yellow,
+    orange,
+    violet,
+    pink
+  );
+  position: absolute;
+  background-size: 900px;
+  top: -2px;
+  left: -2px;
+  z-index: -1;
+  animation: animated-shadow 10s linear infinite alternate;
+  border-radius: 30px;
+}
+
+/* bring blurness */
+
+#box::after {
+  filter: blur(30px);
+}
+
+@keyframes animated-shadow {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  #box {
+    width: 90%;
+    height: 80%;
+    margin: 5% auto;
+  }
+
+  #box p {
+    font-size: 16px;
+    /* Adjusted font size for smaller screens */
+  }
+}
